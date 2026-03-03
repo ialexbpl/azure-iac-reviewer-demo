@@ -8,7 +8,7 @@ resource redis 'Microsoft.Cache/redis@2023-08-01' = {
     sku: {
       name: 'Standard'
       family: 'C'
-      capacity: 1
+      capacity: 2
     }
     minimumTlsVersion: '1.2'
   }

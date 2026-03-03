@@ -19,7 +19,7 @@ resource sqlDatabase 'Microsoft.Sql/servers/databases@2023-05-01-preview' = {
   name: 'db-demo-${environment}'
   location: location
   sku: {
-    name: 'GP_Gen5_4'
+    name: 'GP_Gen5_8'
     tier: 'GeneralPurpose'
   }
   tags: {
