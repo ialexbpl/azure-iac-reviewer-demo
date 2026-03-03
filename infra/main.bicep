@@ -25,6 +25,33 @@ module keyvault 'modules/keyvault.bicep' = {
   }
 }
 
+module vm 'modules/vm.bicep' = {
+  name: 'vm'
+  params: {
+    location: location
+    environment: environment
+  }
+}
+
+module database 'modules/database.bicep' = {
+  name: 'database'
+  params: {
+    location: location
+    environment: environment
+  }
+}
+
+module redis 'modules/redis.bicep' = {
+  name: 'redis'
+  params: {
+    location: location
+    environment: environment
+  }
+}
+
 output storageAccountName string = storage.outputs.storageAccountName
 output webAppUrl string = appservice.outputs.webAppUrl
 output keyVaultName string = keyvault.outputs.keyVaultName
+output sqlServerFqdn string = database.outputs.sqlServerFqdn
+output redisHostName string = redis.outputs.redisHostName
+output vmName string = vm.outputs.vmName
