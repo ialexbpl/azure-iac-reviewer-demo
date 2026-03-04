@@ -12,6 +12,9 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2023-01-01' = {
   properties: {
     reserved: true
   }
+  tags: {
+    environment: environment
+  }
 }
 
 resource webApp 'Microsoft.Web/sites@2023-01-01' = {
@@ -25,6 +28,9 @@ resource webApp 'Microsoft.Web/sites@2023-01-01' = {
       linuxFxVersion: 'DOTNETCORE|8.0'
       minTlsVersion: '1.2'
     }
+  }
+  tags: {
+    environment: environment
   }
 }
 
