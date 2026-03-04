@@ -49,8 +49,8 @@ module redis 'modules/redis.bicep' = {
   }
 }
 
-module aks 'modules/aks.bicep' = {
-  name: 'aks'
+module postgres 'modules/postgres.bicep' = {
+  name: 'postgres'
   params: {
     location: location
     environment: environment
@@ -71,5 +71,5 @@ output keyVaultName string = keyvault.outputs.keyVaultName
 output sqlServerFqdn string = database.outputs.sqlServerFqdn
 output redisHostName string = redis.outputs.redisHostName
 output vmName string = vm.outputs.vmName
-output aksName string = aks.outputs.aksName
+output postgresHost string = postgres.outputs.postgresHost
 output serviceBusEndpoint string = servicebus.outputs.serviceBusEndpoint
