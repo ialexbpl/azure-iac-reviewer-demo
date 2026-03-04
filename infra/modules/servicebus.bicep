@@ -20,6 +20,9 @@ resource ordersQueue 'Microsoft.ServiceBus/namespaces/queues@2022-10-01-preview'
     maxSizeInMegabytes: 1024
     defaultMessageTimeToLive: 'P14D'
   }
+  tags: {
+    environment: environment
+  }
 }
 
 output serviceBusEndpoint string = serviceBusNamespace.properties.serviceBusEndpoint
