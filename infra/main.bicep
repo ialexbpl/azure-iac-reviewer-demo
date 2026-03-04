@@ -65,6 +65,22 @@ module servicebus 'modules/servicebus.bicep' = {
   }
 }
 
+module acr 'modules/acr.bicep' = {
+  name: 'acr'
+  params: {
+    location: location
+    environment: environment
+  }
+}
+
+module worker 'modules/worker.bicep' = {
+  name: 'worker'
+  params: {
+    location: location
+    environment: environment
+  }
+}
+
 output storageAccountName string = storage.outputs.storageAccountName
 output webAppUrl string = appservice.outputs.webAppUrl
 output keyVaultName string = keyvault.outputs.keyVaultName
@@ -73,3 +89,5 @@ output redisHostName string = redis.outputs.redisHostName
 output vmName string = vm.outputs.vmName
 output postgresHost string = postgres.outputs.postgresHost
 output serviceBusEndpoint string = servicebus.outputs.serviceBusEndpoint
+output acrLoginServer string = acr.outputs.loginServer
+output workerVmName string = worker.outputs.workerVmName
