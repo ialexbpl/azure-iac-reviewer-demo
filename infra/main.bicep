@@ -49,9 +49,27 @@ module redis 'modules/redis.bicep' = {
   }
 }
 
+module aks 'modules/aks.bicep' = {
+  name: 'aks'
+  params: {
+    location: location
+    environment: environment
+  }
+}
+
+module servicebus 'modules/servicebus.bicep' = {
+  name: 'servicebus'
+  params: {
+    location: location
+    environment: environment
+  }
+}
+
 output storageAccountName string = storage.outputs.storageAccountName
 output webAppUrl string = appservice.outputs.webAppUrl
 output keyVaultName string = keyvault.outputs.keyVaultName
 output sqlServerFqdn string = database.outputs.sqlServerFqdn
 output redisHostName string = redis.outputs.redisHostName
 output vmName string = vm.outputs.vmName
+output aksName string = aks.outputs.aksName
+output serviceBusEndpoint string = servicebus.outputs.serviceBusEndpoint
