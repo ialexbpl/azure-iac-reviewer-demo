@@ -1,5 +1,6 @@
 param location string
 param environment string
+param adminUsername string = 'azureuser'
 
 resource workerVm 'Microsoft.Compute/virtualMachines@2023-09-01' = {
   name: 'vm-worker-${environment}'
@@ -24,7 +25,7 @@ resource workerVm 'Microsoft.Compute/virtualMachines@2023-09-01' = {
     }
     osProfile: {
       computerName: 'vm-worker'
-      adminUsername: 'azureuser'
+      adminUsername: adminUsername
       linuxConfiguration: {
         disablePasswordAuthentication: true
       }
